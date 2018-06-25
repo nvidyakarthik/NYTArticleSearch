@@ -1,4 +1,6 @@
 const db = require("../models");
+const axios = require("axios");
+const BASEURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 
 // Defining methods for the ArticlesController
 module.exports = {
@@ -33,5 +35,16 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  getArticles: function(req,res){
+    axios
+    .get(BASEURL,{ params: req.query})
+    .then(({ data: { response } }) => {
+      console.log("++++++++++++++"+response);
+      res.json(response)
+    })
+    .catch(err => res.status(422).json(err));
+
   }
+
 };

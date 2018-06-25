@@ -16,11 +16,7 @@ export default {
   getSavedArticles: function() {
     return axios.get("/api/articles/saved");
   },
-  // Gets the article with the given id
-  getArticle: function(id) {
-    return axios.get("/api/articles/" + id);
-  },
-  // Deletes the article with the given id
+   // Deletes the article with the given id
   deleteArticle: function(id) {
     return axios.delete("/api/articles/" + id);
   },

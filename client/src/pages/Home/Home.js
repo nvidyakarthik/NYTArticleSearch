@@ -33,10 +33,9 @@ class Home extends Component {
         });
     };
 
-    handleSaveArticle=(title,weburl,pubDate)=>{
+    handleSaveArticle=(title,weburl)=>{
         API.saveArticle({
             title:title,            
-            date:pubDate,
             url:weburl})
         .then(res =>this.loadSavedArticles()
         )
@@ -105,7 +104,7 @@ class Home extends Component {
                                                saveFunc={this.handleSaveArticle}
                                                title={article.headline.main}
                                                weburl={article.web_url}
-                                               date={article.pub_date}>Save</FormBtn>
+                                            >Save</FormBtn>
 
                                         </div>
                                         );

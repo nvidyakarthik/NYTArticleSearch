@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import Card from "../../components/Card";
+import moment from 'moment';
 import DeleteBtn from "../../components/DeleteBtn"
 import { Input, Label, FormBtn } from "../../components/Form";
 import "./Home.css";
@@ -126,7 +127,7 @@ class Home extends Component {
                                             <a href={article.url} target="_blank">
                                                 {article.title}
                                             </a></div>
-                                            <div className="col-xs-4">Date Saved: {article.date}</div>
+                                            <div className="col-xs-4">Date Saved: {moment(article.date).format('YYYY/MM/DD')}</div>
                                             <div className="col-xs-4">
                                             <DeleteBtn
                                                onClick={()=>this.deleteArticle(article._id)}  

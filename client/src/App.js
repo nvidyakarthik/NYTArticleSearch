@@ -12,7 +12,7 @@ const App = () => (
       <Jumbotron />
       <Switch>
         <Route exact path="/" component={Home} />
-        {/* <Route exact path="/articles" component={Saved} /> */}
+       {/*  <Route exact path="/articles" component={Saved} />  */}
         {/* <Route exact path="/articles/:id" component={Detail} /> */}
         <Route component={NoMatch} />
       </Switch>

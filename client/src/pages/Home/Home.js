@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import Card from "../../components/Card";
-import moment from 'moment';
-import DeleteBtn from "../../components/DeleteBtn"
+import Saved from "../../pages/Saved";
 import { Input, Label, FormBtn } from "../../components/Form";
 import "./Home.css";
  
@@ -13,11 +12,10 @@ class Home extends Component {
         startyear: "",
         endyear: "",
         articles: [],
-        savedArticles:[],
         buttonName:"Save"
 
     };
-    componentDidMount() {
+    /* componentDidMount() {
 
        this.loadSavedArticles();
       } 
@@ -26,7 +24,7 @@ class Home extends Component {
             .then(res => this.setState({ savedArticles: res.data})
             )
             .catch(err => console.log(err));
-    };
+    }; */
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -43,12 +41,12 @@ class Home extends Component {
         .catch(err => console.log(err));
     }
 
-    deleteArticle = id => {
+    /* deleteArticle = id => {
         API.deleteArticle(id)
           .then(res => this.loadSavedArticles())
           .catch(err => console.log(err));
       };
-
+ */
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.topic && this.state.startyear && this.state.endyear) {
@@ -106,6 +104,7 @@ class Home extends Component {
                                                title={article.headline.main}
                                                weburl={article.web_url}
                                             >Save</FormBtn>
+                                            <div>Published Date : {article.pub_date}</div>
 
                                         </div>
                                         );
@@ -115,35 +114,7 @@ class Home extends Component {
                             )
                         }
             </Card>
-             <Card title="Saved Articles">
-            {!this.state.savedArticles.length ? (
-                            <h1 className="text-center">You don't have any Saved Articles.</h1>
-                        ) : (
-                                <div>
-                                    {this.state.savedArticles.map(article => {
-                                        return (
-                                        <div className="card card-block bg-faded">
-                                            <div className="col-xs-4">
-                                            <a href={article.url} target="_blank">
-                                                {article.title}
-                                            </a></div>
-                                            <div className="col-xs-4">Date Saved: {moment(article.date).format('YYYY/MM/DD')}</div>
-                                            <div className="col-xs-4">
-                                            <DeleteBtn
-                                               onClick={()=>this.deleteArticle(article._id)}  
-                                               key={article._id}
-                                               title={article.title}
-                                               weburl={article.url}
-                                               date={article.date}>Delete</DeleteBtn></div>
-
-                                        </div>
-                                        );
-                                    })}
-                                </div>
-
-                            )
-                        }
-            </Card>
+             <Saved/>
            </div>
             
 

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
 import API from "../../utils/API";
 import Card from "../../components/Card";
 import Saved from "../../pages/Saved";
@@ -33,11 +34,15 @@ class Home extends Component {
     };
 
     handleSaveArticle=(title,weburl)=>{
+
         API.saveArticle({
             title:title,            
             url:weburl})
-        .then(res =>this.loadSavedArticles()
-        )
+        .then(res =>{
+            console.log("Article Saved");
+            //this.loadSavedArticles();
+           // ReactDOM.findDOMNode(e.target).innerHTML="Saved";
+        })
         .catch(err => console.log(err));
     }
 
@@ -103,7 +108,7 @@ class Home extends Component {
                                                saveFunc={this.handleSaveArticle}
                                                title={article.headline.main}
                                                weburl={article.web_url}
-                                            >Save</FormBtn>
+                                               >Save</FormBtn>
                                             <div>Published Date : {article.pub_date}</div>
 
                                         </div>
@@ -114,7 +119,7 @@ class Home extends Component {
                             )
                         }
             </Card>
-             <Saved/>
+            
            </div>
             
 

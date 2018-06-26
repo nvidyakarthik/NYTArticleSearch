@@ -9,6 +9,7 @@ class Saved extends Component {
     state={
         savedArticles:[]
     }
+    
     componentDidMount() {
 
         this.loadSavedArticles();
@@ -28,6 +29,7 @@ class Saved extends Component {
 
     render() {
         return(
+        <div className="container">    
         <Card title="Saved Articles">
             {!this.state.savedArticles.length ? (
                 <h1 className="text-center">You don't have any Saved Articles.</h1>
@@ -57,6 +59,7 @@ class Saved extends Component {
                 )
             }
         </Card>
+        </div>
         );
 
     }

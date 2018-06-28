@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import ReactDOM from 'react-dom';
 import API from "../../utils/API";
 import Card from "../../components/Card";
-import Saved from "../../pages/Saved";
 import { Input, Label, FormBtn } from "../../components/Form";
 import "./Home.css";
+import moment from 'moment';
  
 class Home extends Component {
 
@@ -13,19 +12,9 @@ class Home extends Component {
         startyear: "",
         endyear: "",
         articles: [],
-        buttonName:"Save"
-
+        
     };
-    /* componentDidMount() {
-
-       this.loadSavedArticles();
-      } 
-    loadSavedArticles = () => {
-        API.getSavedArticles()
-            .then(res => this.setState({ savedArticles: res.data})
-            )
-            .catch(err => console.log(err));
-    }; */
+    
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -40,18 +29,19 @@ class Home extends Component {
             url:weburl})
         .then(res =>{
             console.log("Article Saved");
-            //this.loadSavedArticles();
-           // ReactDOM.findDOMNode(e.target).innerHTML="Saved";
+            let filteredArticles=this.state.articles.filter(function(element){
+                return element.web_url!==weburl;
+
+            });
+            this.setState({articles:filteredArticles});
+
         })
         .catch(err => console.log(err));
     }
+    clearResults=()=>{
+        this.setState({articles:[]});
+    }
 
-    /* deleteArticle = id => {
-        API.deleteArticle(id)
-          .then(res => this.loadSavedArticles())
-          .catch(err => console.log(err));
-      };
- */
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.topic && this.state.startyear && this.state.endyear) {
@@ -75,21 +65,21 @@ class Home extends Component {
                     </div>
 
                     <div className="form-group">
-                        <label for="formGroupExampleInput2">Start Year (optional):</label>
+                        <label for="formGroupExampleInput2">Start Year :</label>
                         <input type="text" className="form-control" value={this.state.startyear}
                             onChange={this.handleInputChange}
                             name="startyear"
-                            placeholder="Start Year (required)" />
+                            placeholder="YYYY" />
                     </div>
                     <div className="form-group">
-                        <label for="formGroupExampleInput2">End Year (optional):</label>
+                        <label for="formGroupExampleInput2">End Year :</label>
                         <input type="text" className="form-control" value={this.state.endyear}
                             onChange={this.handleInputChange}
                             name="endyear"
-                            placeholder="End Year (required)" />
+                            placeholder="YYYY" />
                     </div>
-                    <button type="button" className="btn btn-secondary" id="search" onClick={this.handleFormSubmit}><i className="fas fa-search"></i> Search</button>
-                    <button type="button" className="btn btn-secondary" id="clear">Clear Results</button>
+                    <button type="button" className="btn btn-success" id="search" onClick={this.handleFormSubmit}><i className="fas fa-search"></i> Search</button>
+                    <button type="button" className="btn btn-success" id="clear" onClick={this.clearResults}>Clear Results</button>
                 </form>
 
             </Card>
@@ -98,23 +88,27 @@ class Home extends Component {
                             <h1 className="text-center">No Articles found to Display.</h1>
                         ) : (
                                 <div>
-                                    {this.state.articles.map(article => {
+                                    {this.state.articles.map((article,i) => {
                                         return (
-                                        <div className="well">
+                                        <div className="card card-block bg-faded" key={i}>
+                                          <div className="col-xs-4">
                                             <a href={article.web_url} target="_blank">
                                                 {article.headline.main}
                                             </a>
+                                            </div>
+                                            <div className="col-xs-4">
                                             <FormBtn 
                                                saveFunc={this.handleSaveArticle}
                                                title={article.headline.main}
                                                weburl={article.web_url}
                                                >Save</FormBtn>
-                                            <div>Published Date : {article.pub_date}</div>
+                                            </div>   
+                                            <div className="col-xs-4">Published Date : {moment(article.pub_date).format('MMMM Do YYYY')}</div>
 
                                         </div>
                                         );
                                     })}
-                                </div>
+                                </div> 
 
                             )
                         }

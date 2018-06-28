@@ -1,3 +1,16 @@
 .well {
     height: 48px;
 }
+.card {
+    margin-top: 20px;
+    margin-bottom: 29px;
+}
+.resultcard {
+    border: 1px solid #dfd7d7;
+    margin-bottom: 10px;
+    padding: 7px;
+}
+#search{
+    margin-right:10px;
+}
+

@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./NavTabs.css"
 
 const NavTabs = () => (
-  <ul className="nav nav-tabs">
+  <ul className="nav nav-tabs" id="headerlinks">
     <li className="nav-item">
       <Link
         to="/"

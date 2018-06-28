@@ -8,8 +8,8 @@ export default {
     return axios.get("/api/articles" , { params:
    { 
       q: topic,
-      begin_date:startdate,
-      end_date:enddate,
+      begin_date:startdate+"0101",
+      end_date:enddate+"0101",
       'api-key':APIKEY } 
     });
   },

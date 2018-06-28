@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import DeleteBtn from "../../components/DeleteBtn";
 import Card from "../../components/Card";
 import moment from 'moment';
+import "./Saved.css";
 
 
 class Saved extends Component {

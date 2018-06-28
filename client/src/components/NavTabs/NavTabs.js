@@ -7,11 +7,9 @@ const NavTabs = () => (
     <li className="nav-item">
       <Link
         to="/"
-        className={
-          window.location.pathname === "/" ? "nav-link active" : "nav-link"
-        }
+        className="nav-link" id="logo"
       >
-        Article Scrubber
+        Article Search
       </Link>
     </li>
     <li className="nav-item">

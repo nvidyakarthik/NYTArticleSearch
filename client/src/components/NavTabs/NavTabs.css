@@ -3,8 +3,12 @@
 }
 #headerlinks a{
     color: #45443bf2;
+    font-size: 19px;
 }
 .nav-link {
     
     padding: 14px 1rem;
+}
+#logo{
+    font-family: 'Spicy Rice', cursive;
 }

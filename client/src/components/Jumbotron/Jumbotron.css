@@ -6,3 +6,10 @@
     background-repeat: no-repeat;
     
   }
+  h1.display-4.text-center{
+    font-family: 'Spicy Rice', cursive;
+  }
+  p.lead.text-center{
+    font-family: 'Jim Nightshade', cursive;
+    font-size: 30px;
+  }

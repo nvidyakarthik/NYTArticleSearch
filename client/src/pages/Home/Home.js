@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import Card from "../../components/Card";
-import { Input, Label, FormBtn } from "../../components/Form";
+import {FormBtn } from "../../components/Form";
 import "./Home.css";
 import moment from 'moment';
  
@@ -58,21 +58,21 @@ class Home extends Component {
             <Card title="Search Parameters">
                 <form>
                     <div className="form-group">
-                        <label for="formGroupExampleInput">Topic:</label>
+                        <label>Topic:</label>
                         <input type="text" className="form-control" value={this.state.topic}
                             onChange={this.handleInputChange}
                             name="topic" />
                     </div>
 
                     <div className="form-group">
-                        <label for="formGroupExampleInput2">Start Year :</label>
+                        <label>Start Year :</label>
                         <input type="text" className="form-control" value={this.state.startyear}
                             onChange={this.handleInputChange}
                             name="startyear"
                             placeholder="YYYY" />
                     </div>
                     <div className="form-group">
-                        <label for="formGroupExampleInput2">End Year :</label>
+                        <label>End Year :</label>
                         <input type="text" className="form-control" value={this.state.endyear}
                             onChange={this.handleInputChange}
                             name="endyear"

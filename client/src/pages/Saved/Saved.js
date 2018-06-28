@@ -38,7 +38,7 @@ class Saved extends Component {
                     <div>
                         {this.state.savedArticles.map(article => {
                             return (
-                                <div className="card card-block bg-faded">
+                                <div className="card card-block bg-faded" key={article._id}>
                                     <div className="col-xs-4">
                                         <a href={article.url} target="_blank">
                                             {article.title}
@@ -47,7 +47,7 @@ class Saved extends Component {
                                     <div className="col-xs-4">
                                         <DeleteBtn
                                             onClick={() => this.deleteArticle(article._id)}
-                                            key={article._id}
+                                            
                                             title={article.title}
                                             weburl={article.url}
                                             date={article.date}>Delete</DeleteBtn></div>

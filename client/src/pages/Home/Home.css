@@ -13,4 +13,14 @@
 #search{
     margin-right:10px;
 }
+.btn-success {
+    color: #5f6b59;
+    background-color: #c4d4bc;
+    border-color: #5eaa38;
+  }
+  .btn-success:hover {
+    color: #647267;
+    background-color: #fff;
+    border-color: #1a873a;
+  }
 

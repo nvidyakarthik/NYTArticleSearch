@@ -40,42 +40,7 @@ class Search extends Component {
     render() {
         return (
 
-            /*  <form>
-             <div className="form-group">    
-             <Label for="topic">Topic</Label>    
-             <Input
-                 value={this.state.topic}
-                 onChange={this.handleInputChange}
-                 name="topic"
-                 placeholder="Topic (required)"
-             />
-             </div>
-             <div className="form-group">
-             <Label for="startyear">Start Year</Label>                
-             <Input
-                 value={this.state.startyear}
-                 onChange={this.handleInputChange}
-                 name="startyear"
-                 placeholder="Start Year (required)"
-             />
-             </div>
-             <div className="form-group">
-             <Label for="endyear">End Year</Label>                    
-             <Input
-                 value={this.state.endyear}
-                 onChange={this.handleInputChange}
-                 name="endyear"
-                 placeholder="End Year (required)"
-             />
-             </div>
-             <FormBtn
-                 disabled={!(this.state.topic && this.state.startyear)}
-                 onClick={this.handleFormSubmit}>
-                 Search
-             </FormBtn>
-     </form>
-
-*/<div className="container">
+ <div className="container">
             <div className="card">
                 <div className="card-header">
                     <i className="fas fa-table"></i> Search Parameters
@@ -130,7 +95,7 @@ class Search extends Component {
             <div className="card-body">
            
              {!this.state.articles ? (
-                <h1 className="text-center">No Recipes to Display</h1>
+                <h1 className="text-center">No Articles to Display</h1>
               ) : (
                   <div className="card">
                   {this.state.articles.map(article => {
